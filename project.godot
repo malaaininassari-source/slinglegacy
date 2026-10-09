@@ -1,14 +1,14 @@
 ; Engine configuration file.
-; SLING LEGACY v1.0 — created by Maelainin Assari
+; SLING LEGACY v1.0 - created by Maelainin Assari
 
 config_version=5
 
 [application]
 
 config/name="SLING LEGACY"
-config/description="A Real Football Career — 6v6 football, offline career, Arabic RTL UI."
+config/description="A Real Football Career - 6v6 football, offline career, Arabic RTL UI"
 config/version="1.0"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.png"
 
@@ -30,5 +30,3 @@ window/volume_buttons/volume_buttons_as_orientation=false
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/msaa_3d=0
-shadows/soft_shadow_quality=0
