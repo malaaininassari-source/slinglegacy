@@ -48,6 +48,7 @@ jobs:
       - name: Import Godot Project Resources
         run: |
           godot --headless --editor --quit || true
+          godot --headless --editor --quit || true
 
       - name: Build Android APK
         run: |
