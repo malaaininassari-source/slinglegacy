@@ -12,12 +12,9 @@ const XP_PER_POINT := 50
 
 # ------------------------------------------------------------------ clubs ----
 var clubs := [
-	{"name": "نجوم دوار اللوح", "short": "NDL", "color": Color("18a957"), "color2": Color("0d5c2e"), "letter": "ن", "strength": 78},
-	{"name": "أطلس غرناطة", "short": "ATL", "color": Color("2456c9"), "color2": Color("122a66"), "letter": "أ", "strength": 74},
-	{"name": "صقور الريف", "short": "SOQ", "color": Color("c92f2f"), "color2": Color("661616"), "letter": "ص", "strength": 72},
-	{"name": "أسود سوس", "short": "ASD", "color": Color("22262e"), "color2": Color("d4af37"), "letter": "س", "strength": 75},
-	{"name": "فارس المحيط", "short": "FAM", "color": Color("0f8f8f"), "color2": Color("084848"), "letter": "ف", "strength": 70},
-	{"name": "شعلة الأطلس", "short": "CHA", "color": Color("e07b1f"), "color2": Color("7a4411"), "letter": "ش", "strength": 71},
+	{"name": "نجوم دوار اللوح", "short": "NDL", "color": "18a957", "color2": "0d5c2e", "letter": "ن", "strength": 70},
+	{"name": "أطلس غرناطة", "short": "ATL", "color": "2456c9", "color2": "122a66", "letter": "أ", "strength": 74},
+	{"name": "صقور الريف", "short": "SOQ", "color": "c92f2f", "color2": "661616", "letter": "ص", "strength": 72}
 ]
 
 var formations := {
