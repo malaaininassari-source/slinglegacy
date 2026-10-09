@@ -47,7 +47,7 @@ jobs:
       - name: Build Android APK
         run: |
           mkdir -p build
-          godot --headless --export-debug "Android" build/SLING-LEGACY.apk
+          godot --headless --editor-setting "export/android/debug_keystore" "$HOME/.android/debug.keystore" --editor-setting "export/android/debug_keystore_user" "androiddebugkey" --editor-setting "export/android/debug_keystore_pass" "android" --export-debug "Android" build/SLING-LEGACY.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
