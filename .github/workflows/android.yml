@@ -37,8 +37,13 @@ jobs:
 
       - name: Create Debug Keystore
         run: |
-          mkdir -p ~/.android
-          keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore ~/.android/debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+          keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+
+      - name: Configure Keystore in Preset
+        run: |
+          sed -i 's|keystore/debug=.*|keystore/debug="debug.keystore"|g' export_presets.cfg
+          sed -i 's|keystore/debug_user=.*|keystore/debug_user="androiddebugkey"|g' export_presets.cfg
+          sed -i 's|keystore/debug_password=.*|keystore/debug_password="android"|g' export_presets.cfg
 
       - name: Import Godot Project Resources
         run: |
@@ -47,7 +52,7 @@ jobs:
       - name: Build Android APK
         run: |
           mkdir -p build
-          godot --headless --editor-setting "export/android/debug_keystore" "$HOME/.android/debug.keystore" --editor-setting "export/android/debug_keystore_user" "androiddebugkey" --editor-setting "export/android/debug_keystore_pass" "android" --export-debug "Android" build/SLING-LEGACY.apk
+          godot --headless --export-debug "Android" build/SLING-LEGACY.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
