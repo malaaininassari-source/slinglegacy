@@ -1,0 +1,10 @@
+# Godot 4
+.godot/
+build/
+*.apk
+*.ap_
+*.aab
+*.keystore
+*.pck
+.import/
+export_presets.cfg.local
