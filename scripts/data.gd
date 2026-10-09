@@ -47,7 +47,7 @@ var career: Dictionary = {}   # empty = no career yet
 
 # ----------------------------------------------------------------- saves ----
 func load_settings() -> void:
-	var d := _read_json(SETTINGS_PATH)
+	var d = _read_json(SETTINGS_PATH)
 	if d is Dictionary:
 		for k in settings.keys():
 			if d.has(k):
@@ -65,7 +65,7 @@ func reset_all_data() -> void:
 	save_settings()
 
 func load_career() -> void:
-	var d := _read_json(CAREER_PATH)
+	var d = _read_json(CAREER_PATH)
 	if d is Dictionary and int(d.get("version", 0)) == SAVE_VERSION:
 		career = d
 	else:
