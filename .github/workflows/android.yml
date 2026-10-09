@@ -1,0 +1,45 @@
+name: Build Android Debug APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.2.2
+    name: Export Android APK
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download & Setup Godot Export Templates
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/4.2.2.stable
+          wget https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_export_templates.tpz
+          unzip Godot_v4.2.2-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/
+          mv ~/.local/share/godot/export_templates/templates/* ~/.local/share/godot/export_templates/4.2.2.stable/
+          rm -rf ~/.local/share/godot/export_templates/templates Godot_v4.2.2-stable_export_templates.tpz
+
+      - name: Android Debug Keystore Setup
+        run: |
+          mkdir -p ~/.android
+          keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore ~/.android/debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+
+      - name: Import Godot Project Resources
+        run: |
+          godot --headless --editor --quit || true
+
+      - name: Build Android APK
+        run: |
+          mkdir -p build
+          godot --headless --export-debug "Android" build/SLING-LEGACY.apk
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SLING-LEGACY-Debug-APK
+          path: build/SLING-LEGACY.apk
